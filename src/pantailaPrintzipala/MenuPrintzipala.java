@@ -1,9 +1,81 @@
 package pantailaPrintzipala;
 
+import java.util.Scanner;
+
+import datuBase.DatuBaseEguneraketa;
+import datuak.DatuakBistaratu;
+import gehituErabiltzaile.ErabiltzaileGehiketa;
+import login.Sarbidea;
+import xml.XmlSortu;
+
 public class MenuPrintzipala {
 
 	public MenuPrintzipala() {
-		System.out.println("Kaixo, hau da Menu Printzipala ");
+		menuAukeraketa();
+	}
+
+	private void menuAukeraketa() {
+
+		Scanner sc = new Scanner(System.in);
+		int zenbakiAukera;
+
+		do {
+
+			System.out.println("1. Erabiltzailea gehitu");
+			System.out.println("2. XML-a sortu");
+			System.out.println("3. Datu-basea eguneratu");
+			System.out.println("4. Datuak erakutsi");
+			System.out.println("5. Irten");
+
+			System.out.println();
+
+			System.out.println("Non sartu nahi duzu?");
+			zenbakiAukera = sc.nextInt();
+
+			if (zenbakiAukera == 1) {
+				sartuErabiltzaileGehiketa();
+				break;
+			} else if (zenbakiAukera == 2) {
+				sartuXmlEgiteko();
+				break;
+			} else if (zenbakiAukera == 3) {
+				sartuDatuBaseKonfigurazioa();
+				break;
+			} else if (zenbakiAukera == 4) {
+				sartuDatuakErakusteko();
+				break;
+			} else if (zenbakiAukera == 5) {
+				atzeraJoan();
+				break;
+			} else {
+				System.out.println("Ez duzu ondo aukeratu zenbakia...");
+				System.out.println("Mesedez, aukeratu berriro zenbakia :)");
+			}
+
+		} while (zenbakiAukera != 1 || zenbakiAukera != 2 || zenbakiAukera != 3 || zenbakiAukera != 4
+				|| zenbakiAukera != 5);
+
+		sc.close();
+	}
+
+	private void sartuErabiltzaileGehiketa() {
+		new ErabiltzaileGehiketa();
+	}
+
+	private void sartuXmlEgiteko() {
+		new XmlSortu();
+	}
+
+	private void sartuDatuBaseKonfigurazioa() {
+		new DatuBaseEguneraketa();
+	}
+
+	private void sartuDatuakErakusteko() {
+		new DatuakBistaratu();
+	}
+
+	private void atzeraJoan() {
+		new Sarbidea();
 	}
 
 }

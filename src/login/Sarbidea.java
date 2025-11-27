@@ -14,35 +14,15 @@ public class Sarbidea {
 	}
 
 	public Sarbidea() {
-		
-		Scanner sc = new Scanner(System.in);
 
-		int aukera;
-
-		System.out.println("1. Login");
-		System.out.println("2. Erabiltzailea gehitu");
-		System.out.println("Sartu zenbaki bat");
-
-		aukera = sc.nextInt();
-
-		switch (aukera) {
-
-		case 1:
-			login();
-			break;
-		case 2:
-			break;
-
-		}
-
-		sc.close();
+		login();
 
 	}
-	
+
 	private void login() {
 
 		Scanner sc = new Scanner(System.in);
-		
+
 		String[] erabiltzailea = { "egoitz", "ane", "imanol", "zunbeltz" };
 		String[] pasahitza = { "egoitz", "ane", "imanol", "zunbeltz" };
 
@@ -52,9 +32,11 @@ public class Sarbidea {
 		do {
 			System.out.println("Erabiltzailea: ");
 			String sartuErabiltzaile = sc.nextLine();
+			sartuErabiltzaile = sartuErabiltzaile.toLowerCase();
 
 			System.out.println("Pasahitza: ");
 			String sartuPasahitza = sc.nextLine();
+			sartuPasahitza = sartuPasahitza.toLowerCase();
 
 			if (baDago(erabiltzailea, sartuErabiltzaile) && baDago(pasahitza, sartuPasahitza)) {
 				new MenuPrintzipala();
