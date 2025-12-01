@@ -2,16 +2,10 @@ package login;
 
 import java.util.Scanner;
 
+import datuBaseKonexioa.kontsultak.ErabiltzaileOnarpenaLiburutegi;
 import pantailaPrintzipala.MenuPrintzipala;
 
 public class Sarbidea {
-
-	private boolean baDago(String[] iturria, String txekeatu) {
-		for (int i = 0; i < iturria.length; ++i)
-			if (iturria[i].equals(txekeatu))
-				return true;
-		return false;
-	}
 
 	public Sarbidea() {
 
@@ -23,11 +17,10 @@ public class Sarbidea {
 
 		Scanner sc = new Scanner(System.in);
 
-		String[] erabiltzailea = { "egoitz", "ane", "imanol", "zunbeltz" };
-		String[] pasahitza = { "egoitz", "ane", "imanol", "zunbeltz" };
-
 		String saiakeraErantzuna = "";
 		int loginSaiakerak = 4;
+
+		ErabiltzaileOnarpenaLiburutegi onarpena = new ErabiltzaileOnarpenaLiburutegi();
 
 		do {
 			System.out.println("Erabiltzailea: ");
@@ -38,7 +31,7 @@ public class Sarbidea {
 			String sartuPasahitza = sc.nextLine();
 			sartuPasahitza = sartuPasahitza.toLowerCase();
 
-			if (baDago(erabiltzailea, sartuErabiltzaile) && baDago(pasahitza, sartuPasahitza)) {
+			if (onarpena.erabiltzaileOnarpena(sartuErabiltzaile, sartuPasahitza)) {
 				new MenuPrintzipala();
 			}
 
