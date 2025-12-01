@@ -1,4 +1,4 @@
-package ejekutagarria;
+package exekutagarria;
 
 import login.Sarbidea;
 

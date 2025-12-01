@@ -4,35 +4,36 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import datuBaseKonexioa.Konexioa;
 
 public class ErabiltzaileOnarpenaLiburutegi {
 
-	public static final String FROGA = "SELECT izena FROM erabiltzaileak WHERE izena = ? AND pasahitza = ?";
+	private static final String LOGIN_BALIDATU = "SELECT izena FROM erabiltzaileak WHERE izena = ? AND pasahitza = ?";
 
 	public ErabiltzaileOnarpenaLiburutegi() {
 	}
 
 	public boolean erabiltzaileOnarpena(String izena, String pasahitza) {
-		Konexioa db = new Konexioa();
-		Connection konexioa = null;
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-		boolean emaitza = false;
-		
+
+		Konexioa db = new Konexioa(); //Datu Base objektua deitzen da, baina momentuz ez du ezer egiten. 
+		Connection konexioa = null; //Datu Base konexioa deklaratzen da, baina oraindik ez dago deitzen datu basera
+		PreparedStatement stmt = null; //Kontsulta egiteko erabiltzen da, baina oraindik bakarrik deklaratzen da.
+		ResultSet rs = null; //Datu Basearen emaitzen gordetzen du, baina oraindik bakarrik deklaratzen da.
+		boolean emaitza = false; //Segurtasunagaitik, itzultzean edozein gauza, beti false izando da
+
 		try {
 
 			konexioa = db.konexioaBd();
-			// zenbat ilara itzultzen du.
-			stmt = konexioa.prepareStatement(FROGA, Statement.RETURN_GENERATED_KEYS);
+			//Zenbat ilara itzultzen du.
+			stmt = konexioa.prepareStatement(LOGIN_BALIDATU);
 
-			stmt.setString(1, izena);
-			stmt.setString(2, pasahitza);
+			stmt.setString(1, izena); //Lehenengo interrogantean erabiltzailearen ipinitutako izena ipiniko da kontsultan
+			stmt.setString(2, pasahitza); //Bigarren interrogantean erabiltzailearen ipinitutako pasahitza ipiniko da kontsultan
 
 			rs = stmt.executeQuery(); // Kontsultako ilara GUZTIAK LORTZEN ditu
 
+			//".next()" irukurtzen du taula osoa
 			if (rs.next()) {
 				emaitza = true;
 			}
