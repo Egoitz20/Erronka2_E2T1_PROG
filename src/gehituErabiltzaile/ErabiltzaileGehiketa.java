@@ -2,6 +2,7 @@ package gehituErabiltzaile;
 
 import java.util.Scanner;
 
+import datuBaseKonexioa.kontsultak.ErabiltzaileGehiketaLiburutegia;
 import pantailaPrintzipala.MenuPrintzipala;
 
 public class ErabiltzaileGehiketa {
@@ -12,6 +13,7 @@ public class ErabiltzaileGehiketa {
 
 	private void erabiltzaileBerriaSortu() {
 		Scanner sc = new Scanner(System.in);
+		ErabiltzaileGehiketaLiburutegia onarpena = new ErabiltzaileGehiketaLiburutegia();
 		String erabiltzaileBerria, pasahitzaSortu, pasahitzaKonfirmazioa;
 
 		do {
@@ -26,6 +28,7 @@ public class ErabiltzaileGehiketa {
 
 			if (pasahitzaSortu.equals(pasahitzaKonfirmazioa)) {
 				System.out.println("Zure erabiltzailea ondo sortu da!");
+				onarpena.gehituErabiltzaile(erabiltzaileBerria, pasahitzaSortu);
 			} else {
 				System.out.println("Ez duzu ondo idatzi pasahitzak, mesedez saiatu berriro.");
 			}
