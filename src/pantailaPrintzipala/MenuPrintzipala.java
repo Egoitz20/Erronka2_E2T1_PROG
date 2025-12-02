@@ -26,7 +26,6 @@ public class MenuPrintzipala {
 			System.out.println("3. Datu-basea eguneratu");
 			System.out.println("4. Datuak erakutsi");
 			System.out.println("5. Irten");
-
 			System.out.println();
 
 			System.out.println("Non sartu nahi duzu?");
