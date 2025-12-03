@@ -2,6 +2,8 @@ package datuBase;
 
 import java.util.Scanner;
 
+import datuBaseKonexioa.alters.EremuaGehitu;
+
 public class DatuBaseEguneraketa {
 
 	public DatuBaseEguneraketa() {
@@ -35,7 +37,7 @@ public class DatuBaseEguneraketa {
 	}
 
 	private void sartuEremuaGehitu() {
-		new EremuaGehitu();
+		new EremuaGehitu().sortuSoldataEremua();
 	}
 
 	private void sartuTaulaEguneratu() {

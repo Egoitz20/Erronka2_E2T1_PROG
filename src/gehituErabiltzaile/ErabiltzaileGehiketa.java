@@ -2,7 +2,7 @@ package gehituErabiltzaile;
 
 import java.util.Scanner;
 
-import datuBaseKonexioa.kontsultak.ErabiltzaileGehiketaLiburutegia;
+import datuBaseKonexioa.inserts.ErabiltzaileGehiketaLiburutegia;
 import pantailaPrintzipala.MenuPrintzipala;
 
 public class ErabiltzaileGehiketa {
@@ -27,7 +27,6 @@ public class ErabiltzaileGehiketa {
 			pasahitzaKonfirmazioa = sc.nextLine();
 
 			if (pasahitzaSortu.equals(pasahitzaKonfirmazioa)) {
-				System.out.println("Zure erabiltzailea ondo sortu da!");
 				onarpena.gehituErabiltzaile(erabiltzaileBerria, pasahitzaSortu);
 			} else {
 				System.out.println("Ez duzu ondo idatzi pasahitzak, mesedez saiatu berriro.");

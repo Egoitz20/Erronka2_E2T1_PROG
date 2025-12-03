@@ -1,15 +1,14 @@
-package datuBaseKonexioa.kontsultak;
+package datuBaseKonexioa.inserts;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import datuBaseKonexioa.Konexioa;
 
 public class ErabiltzaileGehiketaLiburutegia {
 
-	private static final String ERABILTZAILE_GEHIKETA = "INSERT INTO ERABILTZAILEAK (ID, IZENA, PASAHITZA) VALUES (?, ?, ?)";
+	private static final String ERABILTZAILE_GEHIKETA = "INSERT INTO ERABILTZAILEAK (IZENA, PASAHITZA) VALUES (?, ?)";
 
 	public ErabiltzaileGehiketaLiburutegia() {
 
@@ -24,15 +23,14 @@ public class ErabiltzaileGehiketaLiburutegia {
 			konexioa = db.konexioaBd();
 			// Zenbat ilara itzultzen du.
 			stmt = konexioa.prepareStatement(ERABILTZAILE_GEHIKETA);
-			
-			stmt.setString(2, izena); // Lehenengo interrogantean erabiltzailearen ipinitutako izena ipiniko da
+
+			stmt.setString(1, izena); // Lehenengo interrogantean erabiltzailearen ipinitutako izena ipiniko da
 										// kontsultan
-			stmt.setString(3, pasahitza); // Bigarren interrogantean erabiltzailearen ipinitutako pasahitza ipiniko da
+			stmt.setString(2, pasahitza); // Bigarren interrogantean erabiltzailearen ipinitutako pasahitza ipiniko da
 											// kontsultan
+			stmt.executeUpdate();
 
-			int errenkadaKopurua = stmt.executeUpdate();
-
-			System.out.println(errenkadaKopurua + " errenkada gehitu dira.");
+			System.out.println("Zure erabiltzailea ondo sortu da!");
 
 			stmt.close();
 			konexioa.close();
