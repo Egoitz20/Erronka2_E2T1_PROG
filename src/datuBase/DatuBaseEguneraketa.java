@@ -3,6 +3,7 @@ package datuBase;
 import java.util.Scanner;
 
 import datuBaseKonexioa.alters.EremuaGehitu;
+import datuBaseKonexioa.update.TaulaEguneratu;
 
 public class DatuBaseEguneraketa {
 
