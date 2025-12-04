@@ -65,9 +65,9 @@ public class TaulaEguneratu {
 				int id = rs.getInt("ID");
 			}
 
-			stmt2 = konexioa.prepareStatement(BULEGARI_SOLDATA_EGUNERATU);
-			stmt2.setInt(1, soldata);
-			stmt2.executeUpdate();
+//			stmt2 = konexioa.prepareStatement(BULEGARI_SOLDATA_EGUNERATU);
+//			stmt2.setInt(1, soldata);
+//			stmt2.executeUpdate();
 
 			rs.close();
 			stmt2.close();

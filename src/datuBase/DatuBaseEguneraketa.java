@@ -42,7 +42,7 @@ public class DatuBaseEguneraketa {
 	}
 
 	private void sartuTaulaEguneratu() {
-		new TaulaEguneratu();
+		new TaulaEguneratu().bulegariSoldata();;
 	}
 
 }
