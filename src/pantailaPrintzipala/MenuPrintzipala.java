@@ -3,7 +3,7 @@ package pantailaPrintzipala;
 import java.util.Scanner;
 
 import datuBase.DatuBaseEguneraketa;
-import datuak.DatuakBistaratu;
+import datuBaseKonexioa.kontsultak.DatuakBistaratu;
 import gehituErabiltzaile.ErabiltzaileGehiketa;
 import login.Sarbidea;
 import xml.XmlSortu;

@@ -7,6 +7,8 @@ import datuBaseKonexioa.update.TaulaEguneratu;
 
 public class DatuBaseEguneraketa {
 
+	TaulaEguneratu eguneratu = new TaulaEguneratu();
+
 	public DatuBaseEguneraketa() {
 		menuDatuBase();
 	}
@@ -14,7 +16,7 @@ public class DatuBaseEguneraketa {
 	private void menuDatuBase() {
 		Scanner sc = new Scanner(System.in);
 		int aukeratu;
-		
+
 		do {
 			System.out.println("1. Eremua gehitu");
 			System.out.println("2. Taula eguneratu");
@@ -42,7 +44,8 @@ public class DatuBaseEguneraketa {
 	}
 
 	private void sartuTaulaEguneratu() {
-		new TaulaEguneratu().bulegariSoldata();;
+		eguneratu.saltzaileSoldata();
+		eguneratu.bulegariSoldata();
 	}
 
 }
