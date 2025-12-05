@@ -1,8 +1,10 @@
 package pantailaPrintzipala;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import datuBase.DatuBaseEguneraketa;
+import datuBase.TaulaErabiltzaile;
 import datuBaseKonexioa.kontsultak.DatuakBistaratu;
 import gehituErabiltzaile.ErabiltzaileGehiketa;
 import login.Sarbidea;
@@ -70,7 +72,14 @@ public class MenuPrintzipala {
 	}
 
 	private void sartuDatuakErakusteko() {
-		new DatuakBistaratu();
+		DatuakBistaratu taulaErakutsi = new DatuakBistaratu();
+		ArrayList<TaulaErabiltzaile> arrayInformazioa = taulaErakutsi.taulaBistaratu();
+		
+		for (TaulaErabiltzaile erregistroa : arrayInformazioa) {
+			System.out.println(erregistroa.getIzena() + " " + erregistroa.getPasahitza());
+		}
+		
+		
 	}
 
 	private void atzeraJoan() {
