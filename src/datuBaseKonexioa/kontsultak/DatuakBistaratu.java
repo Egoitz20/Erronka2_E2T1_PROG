@@ -1,9 +1,7 @@
 package datuBaseKonexioa.kontsultak;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 import datuBase.TaulaErabiltzaile;
@@ -21,7 +19,7 @@ public class DatuakBistaratu {
 
 		Konexioa db = new Konexioa();
 		Connection konexioa = null;
-		PreparedStatement stmt = null;
+		Statement stmt = null;
 		ResultSet rs = null;
 		TaulaErabiltzaile erregistro;
 		ArrayList<TaulaErabiltzaile> taulaErabiltzaile = new ArrayList<TaulaErabiltzaile>();
@@ -29,9 +27,8 @@ public class DatuakBistaratu {
 		try {
 
 			konexioa = db.konexioaBd();
-			stmt = konexioa.prepareStatement(ERABILTZAILE_TAULA_BISTARATU);
-
-			rs = stmt.executeQuery();
+			stmt = konexioa.createStatement();
+			rs = stmt.executeQuery(ERABILTZAILE_TAULA_BISTARATU);
 
 			while (rs.next()) {
 				erregistro = new TaulaErabiltzaile();
