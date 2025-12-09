@@ -1,24 +1,46 @@
 /*1 Biltegi guztien IDa eta izena*/ 
 SELECT ID, IZENA FROM BILTEGI;
+
 /*2 “CPU” kategoriako produktu guztien izena, deskribapena eta irabazi-marjina, produktuaren izenaren arabera ordenatuta*/ 
 SELECT IZENA, DESKRIBAPENA, (SALNEURRIA - BALIOA) AS IRABAZI_MARJINA FROM PRODUKTU WHERE ID_KATEGORIA = 1 ORDER BY IZENA;
+
 /*3 13, 17 edo 18 lanpostu id-a duten bulegarien zerrenda (izena, abizena, emaila eta lanpostuaren deskribapena)*/
+SELECT LANGILE.IZENA, LANGILE.ABIZENA, LANGILE.EMAILA, LANPOSTU.DESKRIBAPENA 
+FROM LANGILE
+INNER JOIN BULEGARI ON LANGILE.ID = BULEGARI.ID
+INNER JOIN LANPOSTU ON BULEGARI.ID_LANPOSTU = LANPOSTU.ID
+WHERE BULEGARI.ID_LANPOSTU = 13 OR 14 OR 18;
 
 /*4 20€ edo gutxiago balio duten produktuen izena*/
+SELECT IZENA FROM PRODUKTU WHERE BALIOA <= 20;
 
 /*5 "A" letraz hasten den izena duten langileak*/
+SELECT IZENA FROM LANGILE WHERE IZENA LIKE 'A%';
 
 /*6 2016ko urtarrilean kontrataturiko langileen izen abizenak, kontratazio dataren arabera ordenatuta*/
+SELECT IZENA, ABIZENA FROM LANGILE WHERE YEAR(KONTRATAZIO_DATA)='2016' AND MONTH(KONTRATAZIO_DATA) = '01' ORDER BY KONTRATAZIO_DATA;
+SELECT IZENA, ABIZENA FROM LANGILE WHERE DATE_FORMAT(KONTRATAZIO_DATA, '%Y-%m') = '2016-01';
 
 /*7 Kategoria bakoitzaren izena eta produktu kopurua*/
+SELECT KATEGORIA.IZENA, COUNT(PRODUKTU.IZENA) AS PRODUKTU_KOPURU FROM KATEGORIA
+INNER JOIN PRODUKTU ON KATEGORIA.ID = PRODUKTU.ID_KATEGORIA
+GROUP BY KATEGORIA.IZENA;
 
 /*8 Saltzailerik gabeko eskari kopurua*/
+SELECT COUNT(ID) AS ESKARI_SALTZAILERIK_GABE FROM ESKARI WHERE ID_SALTZAILE IS NULL;
 
 /*9 “Toronto” izeneko biltegian dauden produktu kopuru totala*/
+SELECT SUM(INBENTARIO.KOPURUA) AS KOPURU_TOTALA FROM BILTEGI 
+INNER JOIN INBENTARIO ON BILTEGI.ID = INBENTARIO.ID_BILTEGI
+WHERE BILTEGI.IZENA = 'Toronto';
 
 /*10 Biltegi bakoitzean dagoen produktu kopuru totala*/
+SELECT BILTEGI.IZENA, SUM(INBENTARIO.KOPURUA) AS KOPURU_TOTALA FROM BILTEGI
+INNER JOIN INBENTARIO ON BILTEGI.ID = INBENTARIO.ID_BILTEGI
+GROUP BY BILTEGI.IZENA;
 
 /*11 Produktu bakoitzaren batazbesteko salneurria*/
+SELECT IZENA, AVG(SALNEURRIA) AS BATAZBESTEKO FROM PRODUKTU GROUP BY IZENA;
 
 /*12 “Lily Fisher” izeneko saltzaileak saldutako produktuen izena, deskribapena, balioa, salneurria eta kategoriaren izena*/
 
