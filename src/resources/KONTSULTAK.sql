@@ -43,12 +43,27 @@ GROUP BY BILTEGI.IZENA;
 SELECT IZENA, AVG(SALNEURRIA) AS BATAZBESTEKO FROM PRODUKTU GROUP BY IZENA;
 
 /*12 “Lily Fisher” izeneko saltzaileak saldutako produktuen izena, deskribapena, balioa, salneurria eta kategoriaren izena*/
+SELECT PRODUKTU.IZENA AS PRODUKTU_IZENA, PRODUKTU.DESKRIBAPENA, PRODUKTU.BALIOA, PRODUKTU.SALNEURRIA, KATEGORIA.IZENA AS KATEGORIA_IZENA FROM PRODUKTU
+INNER JOIN KATEGORIA ON PRODUKTU.ID_KATEGORIA = KATEGORIA.ID
+INNER JOIN ESKARI_LERRO ON PRODUKTU.ID = ESKARI_LERRO.ID_PRODUKTU
+INNER JOIN ESKARI ON ESKARI_LERRO.ID_ESKARI = ESKARI.ID
+INNER JOIN LANGILE ON ESKARI.ID_SALTZAILE = LANGILE.ID 
+WHERE LANGILE.IZENA = 'Lily' AND LANGILE.ABIZENA = 'Fisher';
 
 /*13 Produktu garestienen izen, deskribapen eta salneurria*/
+SELECT IZENA, DESKRIBAPENA, SALNEURRIA FROM PRODUKTU 
+ORDER BY SALNEURRIA DESC LIMIT 10;
 
 /*14 Bost eskari baino gehiago burutu dituzten saltzaileen izen, abizen eta eskari kopurua (eskari kopuruaren arabera ordenatuta, beheranzko ordenan)*/
+SELECT LANGILE.IZENA, LANGILE.ABIZENA, COUNT(ESKARI.ID) AS ESKARI_KOPURUA FROM LANGILE
+INNER JOIN ESKARI ON LANGILE.ID = ESKARI.ID_SALTZAILE
+GROUP BY LANGILE.IZENA, LANGILE.ABIZENA
+HAVING COUNT(ESKARI.ID) > 5
+ORDER BY ESKARI_KOPURUA DESC;
 
 /*15 Zazpi urteko antzinatasuna baino gehiago duten langileen zerrenda (izena, abizena, kontratatze-data eta erabiltzailea), kontratatze datagaitik ordenatuta*/
+
+
 
 /*16 2016 urtean egindako eskarien zerrenda (eskariaren id-a, egoera eta eskaera-data, bezeroa (izena eta abizena zutabe bakar batean) eta saltzailea  (izena eta abizena zutabe bakar batean))*/
 
