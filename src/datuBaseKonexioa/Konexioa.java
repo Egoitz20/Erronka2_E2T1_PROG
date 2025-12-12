@@ -12,8 +12,7 @@ public class Konexioa {
 
 	public Konexioa() {
 		// Konexioaren datuak
-		this.url = "jdbc:mysql://localhost:3306/e2t1dbaplikazioa?" + "useSSL=false&" + "serverTimezone=UTC&"
-				+ "allowPublicKeyRetrieval=true"; // Datu Base URL-a
+		this.url = "jdbc:mysql://localhost:3306/e2t1dbaplikazioa?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true"; // Datu Base URL-a
 		this.erabiltzaile = "admin"; // Datu-Baseko erabiltzailea
 		this.pasahitza = "admin"; // Datu-Baseko pasahitza
 	}
