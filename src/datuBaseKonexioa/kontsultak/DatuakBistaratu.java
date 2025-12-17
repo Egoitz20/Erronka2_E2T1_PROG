@@ -9,7 +9,7 @@ import datuBaseKonexioa.Konexioa;
 
 public class DatuakBistaratu {
 
-	private static final String ERABILTZAILE_TAULA_BISTARATU = "SELECT * FROM ERABILTZAILEAK";
+	private static final String ERABILTZAILE_TAULA_BISTARATU = "SELECT * FROM ERABILTZAILE_TAULA_BISTARATU";
 
 	public DatuakBistaratu() {
 

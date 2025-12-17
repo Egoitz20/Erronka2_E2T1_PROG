@@ -1,4 +1,5 @@
 /* 1. Datu-basean Santurtzin eraiki berri duten biltegiko informazioa sartu behar duzue (biltegiko kokalekua zehaztu baita ere). */
+INSERT INTO BILTEGI(ID, IZENA) VALUES ((SELECT MAX(ID) + 1 FROM BILTEGI), 'Santurtzi');
 
 /* 2. Printzipioz, Santurtziko biltegian, “Bombay”ko biltegian dauden produktu berdinak egongo dira eta kopuru bera ere bai. */
 
